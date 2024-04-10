@@ -5,6 +5,11 @@ const Content = require("../models/contentModal");
 let addCount = 0;
 let updateCount = 0;
 
+// Route to get counts
+router.get("/count", (req, res) => {
+  res.json({ addCount, updateCount });
+});
+
 // get all component data
 router.get("/", async (req, res) => {
   try {
@@ -60,11 +65,6 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-});
-
-// Route to get counts
-router.get("/count", (req, res) => {
-  res.json({ addCount, updateCount });
 });
 
 module.exports = router;
